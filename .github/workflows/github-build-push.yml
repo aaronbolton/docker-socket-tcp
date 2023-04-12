@@ -1,11 +1,18 @@
 name: gh-ci
+
 on:
   push:
     branches:
       - 'main'
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
     - uses: actions/checkout@master
     - name: Publish Docker Image
@@ -14,8 +21,8 @@ jobs:
       uses: elgohr/Publish-Docker-Github-Action@3.04
       with:
         # The name of the image you would like to push
-        name: aaronbolton/docker-socket-tcp
+        name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-        registry: ghcr.io
+        registry: ${{ env.REGISTRY }}
         
