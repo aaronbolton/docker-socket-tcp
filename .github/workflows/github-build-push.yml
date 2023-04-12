@@ -25,4 +25,3 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ${{ env.REGISTRY }}
-        
