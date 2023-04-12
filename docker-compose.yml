@@ -11,4 +11,8 @@ services:
       - "2375:2375"
     restart: always      
     networks:
-      private_network:      
+      private_network: 
+
+networks:
+  private_network:
+    external: true
