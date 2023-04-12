@@ -5,6 +5,10 @@ services:
     container_name: docker-socket-tcp
     image: ghcr.io/aaronbolton/docker-socket-tcp
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command: ["tcp-listen:2375,fork,reuseaddr,ignoreeof unix-connect:/var/run/docker.sock"]
     ports:
       - "2375:2375"
+    restart: always      
+    networks:
+      private_network:      
