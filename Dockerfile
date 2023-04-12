@@ -1,10 +1,8 @@
 FROM ubuntu:latest
 
 RUN apt-get update && \
-    apt-get install -y socat docker
+    apt-get install -y socat
 
 VOLUME /var/run/docker.sock
-
-CMD ["dockerd", "-H", "unix:///var/run/docker.sock"]
 
 RUN socat TCP-LISTEN:2375,reuseaddr,fork UNIX-CONNECT:/var/run/docker.sock
