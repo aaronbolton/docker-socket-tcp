@@ -5,4 +5,4 @@ RUN apt-get update && \
 
 VOLUME /var/run/docker.sock
 
-RUN socat TCP-LISTEN:2375,reuseaddr,fork UNIX-CONNECT:/var/run/docker.sock
+ENTRYPOINT ["socat TCP-LISTEN:2375,reuseaddr,fork UNIX-CONNECT:/var/run/docker.sock"]
