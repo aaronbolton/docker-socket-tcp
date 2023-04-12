@@ -1,0 +1,20 @@
+name: gh-ci
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Publish Docker Image
+      # You may pin to the exact commit or the version.
+      # uses: elgohr/Publish-Docker-Github-Action@191af57e15535d28b83589e3b5f0c31e76aa8733
+      uses: elgohr/Publish-Docker-Github-Action@3.04
+      with:
+        # The name of the image you would like to push
+        name: aaronbolton/docker-socket-tcp
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
