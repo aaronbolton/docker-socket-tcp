@@ -2,7 +2,7 @@ version: '3'
 
 services:
   docker-tcp:
-    image: ghcr.io/aaronbolton/docker-socker-tcp:main
+    image: ghcr.io/aaronbolton/docker-socker-tcp
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
