@@ -5,4 +5,4 @@ RUN apt-get update && \
 
 EXPOSE 2375    
 
-ENTRYPOINT ["socat"]
+ENTRYPOINT ["socat TCP-LISTEN:2375,reuseaddr,fork UNIX-CONNECT:/var/run/docker.sock"]

@@ -6,7 +6,7 @@ services:
     image: ghcr.io/aaronbolton/docker-socket-tcp
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    command: ["TCP-LISTEN:2375,reuseaddr,fork UNIX-CONNECT:/var/run/docker.sock"]
+    # command: "TCP-LISTEN:2375,reuseaddr,fork UNIX-CONNECT:/var/run/docker.sock"
     ports:
       - "2375:2375"
     restart: always      
