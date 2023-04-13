@@ -1,8 +1,6 @@
-FROM ubuntu:latest
+FROM alpine:latest
 
-RUN apt-get update && \
-    apt-get install -y socat
+RUN apk -U --no-cache upgrade \
+    && apk --no-cache add socat
 
-EXPOSE 2375    
-
-ENTRYPOINT ["socat TCP-LISTEN:2375,reuseaddr,fork UNIX-CONNECT:/var/run/docker.sock"]
+ENTRYPOINT ["socat"]
